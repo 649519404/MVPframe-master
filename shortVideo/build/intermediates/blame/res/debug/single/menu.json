@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\build\\intermediates\\res\\merged\\debug\\menu\\menu_first.xml",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\src\\main\\res\\menu\\menu_first.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\shortVideo\\src\\main\\res\\menu\\main.xml"
+    }
+]

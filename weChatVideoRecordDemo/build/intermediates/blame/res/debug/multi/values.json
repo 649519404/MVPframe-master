@@ -1,0 +1,144 @@
+[
+    {
+        "outputFile": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 292,
+                    "endColumn": 57,
+                    "endOffset": 345
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 57,
+                        "endOffset": 145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 350,
+                    "endColumn": 55,
+                    "endOffset": 401
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 55,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 406,
+                    "endColumn": 52,
+                    "endOffset": 454
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 118,
+                        "endColumn": 52,
+                        "endOffset": 166
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 459,
+                    "endColumn": 58,
+                    "endOffset": 513
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 58,
+                        "endColumn": 58,
+                        "endOffset": 112
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 518,
+                    "endColumn": 52,
+                    "endOffset": 566
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 172,
+                        "endColumn": 52,
+                        "endOffset": 220
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 571,
+                    "endLine": 14,
+                    "endColumn": 12,
+                    "endOffset": 857
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 191,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 481
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 862,
+                    "endLine": 17,
+                    "endColumn": 12,
+                    "endOffset": 1017
+                },
+                "from": {
+                    "file": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 522,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 679
+                    }
+                }
+            }
+        ]
+    }
+]

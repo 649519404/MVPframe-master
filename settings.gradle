@@ -1,0 +1,4 @@
+include ':app', ':InitActivity'
+
+include ':weChatVideoRecordDemo'
+include ':shortVideo'

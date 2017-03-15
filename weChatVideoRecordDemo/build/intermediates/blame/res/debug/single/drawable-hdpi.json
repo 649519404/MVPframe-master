@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bg_movie_add_shoot.png",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\drawable-hdpi\\bg_movie_add_shoot.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bg_movie_add_shoot_select.png",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\weChatVideoRecordDemo\\src\\main\\res\\drawable-hdpi\\bg_movie_add_shoot_select.png"
+    }
+]
