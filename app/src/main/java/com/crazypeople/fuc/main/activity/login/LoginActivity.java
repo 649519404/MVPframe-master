@@ -1,6 +1,7 @@
 package com.crazypeople.fuc.main.activity.login;
 
-import android.app.ProgressDialog;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.crazypeople.MVPframeApplication;
@@ -12,6 +13,8 @@ import com.crazypeople.fuc.main.entity.User;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
+
 /**
  * Created by 曲志强 on 2017/3/12.
  */
@@ -21,6 +24,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter<User>> implements
 
     @Inject
     LoginPresenter loginPresenter;
+    @Bind(R.id.btn_login)
+    Button btn_login;
     @Override
     protected LoginPresenter getChildPresenter() {
         return new LoginPresenter(this,this);
@@ -33,23 +38,27 @@ public class LoginActivity extends BaseActivity<LoginPresenter<User>> implements
 
     @Override
     protected void baseInitView() {
-        new ProgressDialog(this).show();
+
     }
 
     @Override
     public void baseInit() {
         changeTitle("登录");
         setSetingVisibility(false);
-        mPresenter.login("15638191708","15638191708");
+        btn_login.setOnClickListener(this);
 
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_login:
+                mPresenter.login("15638191708","15638191708");
+                break;
 
-
-
-
-
+        }
+    }
 
     @Override
     public void requestFinish(User user) {

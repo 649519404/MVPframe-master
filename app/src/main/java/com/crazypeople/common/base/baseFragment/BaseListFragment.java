@@ -10,11 +10,14 @@ import com.crazypeople.common.base.baseHolder.BaseViewHolder;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.refresh.ProgressStyle;
 import com.crazypeople.common.refresh.XRecyclerView;
+import com.crazypeople.common.sub.SubPro;
 import com.crazypeople.fuc.main.view.MainView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import rx.Observable;
 
 
 public abstract class BaseListFragment<T extends BasePresenter, K> extends
@@ -118,7 +121,18 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
         Toast.makeText(mContext, "网络环境不好", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showNetError(Observable observable, SubPro subscriber) {
+        if (mVaryViewHelperController == null) {
+            throw new IllegalStateException("no ViewHelperController");
+        }
+        mVaryViewHelperController.showNetworkError(v -> {
+            showLoading();
 
+            mPresenter.requestDate(observable, BasePresenter.RequestMode.FRIST);
+
+        });
+    }
 
     @Override
     public void onRefresh() {

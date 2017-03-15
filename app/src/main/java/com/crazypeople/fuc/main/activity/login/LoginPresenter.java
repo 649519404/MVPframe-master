@@ -5,7 +5,6 @@ import android.content.Context;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.inter.HttpResult;
 import com.crazypeople.common.sub.ProgressSubscriber;
-import com.crazypeople.common.sub.SubscriberOnNextListener;
 import com.crazypeople.fuc.main.activity.login.dagger.LoginView;
 
 import rx.Observable;
@@ -14,7 +13,7 @@ import rx.Observable;
  * Created by 曲志强 on 2017/3/9.
  */
 
-public class LoginPresenter<T> extends BasePresenter implements SubscriberOnNextListener<T> {
+public class LoginPresenter<T> extends BasePresenter {
     private  Context context;
     LoginView loginView;
 
@@ -28,13 +27,13 @@ public class LoginPresenter<T> extends BasePresenter implements SubscriberOnNext
     protected void login(String mobile,String password){
         Observable s= connectManager.login(mobile,password);
         ProgressSubscriber<T> progressSubscriber= new ProgressSubscriber<T>(context,this);
-        requestDate(s, RequestMode.FRIST, progressSubscriber);
+        requestDate(s, RequestMode.FRIST,progressSubscriber);
     }
 
 
     @Override
-    public void onNext(HttpResult<T> t) {
-        T data=t.resultData;
+    public void onNext(HttpResult t) {
+        T data= (T) t.resultData;
         loginView.requestFinish(data);
     }
 

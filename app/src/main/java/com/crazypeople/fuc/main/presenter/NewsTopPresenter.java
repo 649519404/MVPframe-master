@@ -3,7 +3,6 @@ package com.crazypeople.fuc.main.presenter;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.inter.HttpResult;
 import com.crazypeople.common.sub.SubPro;
-import com.crazypeople.common.sub.SubscriberOnNextListener;
 import com.crazypeople.fuc.main.entity.DataBean;
 import com.crazypeople.fuc.main.view.MainView;
 
@@ -13,11 +12,11 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
-public class NewsTopPresenter<T> extends BasePresenter implements SubscriberOnNextListener<List<T>>{
+public class NewsTopPresenter<T> extends BasePresenter {
 
 private MainView mMainView;
-private Observable<HttpResult<List<DataBean>>>observable;
-    private SubPro<T> subscriber;
+public Observable<HttpResult<List<DataBean>>>observable;
+    public SubPro<T> subscriber;
 
     @Inject
 public NewsTopPresenter(MainView mainView){
@@ -27,16 +26,18 @@ public NewsTopPresenter(MainView mainView){
 public void getAll(){
         observable=connectManager.getAll("1");
         subscriber=new SubPro<T>(this);
-        requestDate(observable, RequestMode.FRIST,subscriber);
+        requestDate(observable, RequestMode.FRIST);
 
     }
 
 
     @Override
-    public void onNext(HttpResult<List<T>> entity) {
+    public void onNext(HttpResult entity) {
         if (null != entity) {
+
             if (null != entity.getData()) {
-                List<T> data = entity.getData();
+
+                List<T> data = (List<T>) entity.getData();
                 if (null != data && data.size() > 0) {
                     if (mode == RequestMode.FRIST) {
                         mMainView.showFinishDates(data);

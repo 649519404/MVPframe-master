@@ -24,12 +24,12 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return InfoDetailsFragment.newInstance(roomTypes.get(position));
+        return new InfoDetailsFragment(roomTypes.get(position));
     }
 
     @Override
     public int getCount() {
-        return 1;
+        return roomTypes.size();
     }
 
     @Override

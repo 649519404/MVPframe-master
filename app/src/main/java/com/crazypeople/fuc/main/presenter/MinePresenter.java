@@ -3,7 +3,6 @@ package com.crazypeople.fuc.main.presenter;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.inter.HttpResult;
 import com.crazypeople.common.sub.SubPro;
-import com.crazypeople.common.sub.SubscriberOnNextListener;
 import com.crazypeople.fuc.main.view.MineView;
 
 import javax.inject.Inject;
@@ -12,7 +11,7 @@ import javax.inject.Inject;
  * Created by 曲志强 on 2017/3/9.
  */
 
-public class MinePresenter<T> extends BasePresenter implements SubscriberOnNextListener<T> {
+public class MinePresenter<T> extends BasePresenter  {
     MineView mineView;
 
     @Inject
@@ -23,14 +22,14 @@ public class MinePresenter<T> extends BasePresenter implements SubscriberOnNextL
 
     public void getAll(){
         SubPro<T> subscriber=new SubPro<T>(this);
-        requestDate(connectManager.getAll("1"), RequestMode.FRIST, subscriber);
+        requestDate(connectManager.getAll("1"), RequestMode.FRIST);
 
     }
 
 
     @Override
-    public void onNext(HttpResult<T> t) {
-        T list= t.resultData;
+    public void onNext(HttpResult t) {
+        T list= (T) t.resultData;
         mineView.initData(list);
     }
 

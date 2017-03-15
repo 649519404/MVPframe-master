@@ -15,13 +15,11 @@ import com.crazypeople.R;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.base.baseView.BaseView;
 import com.crazypeople.common.loading.VaryViewHelperController;
-import com.crazypeople.common.sub.SubPro;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 
 import butterknife.ButterKnife;
-import rx.Observable;
 
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements
         BaseView {
@@ -137,18 +135,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         mVaryViewHelperController.restore();
     }
 
-    @Override
-    public void showNetError(Observable observable, SubPro subscriber) {
-        if (mVaryViewHelperController == null) {
-            throw new IllegalStateException("no ViewHelperController");
-        }
-        mVaryViewHelperController.showNetworkError(v -> {
-            showLoading();
-            mPresenter.requestDate(observable, BasePresenter.RequestMode.FRIST,subscriber);
 
-        });
-
-    }
 
     protected Map<String, String> getRequestParams() {
         return null;
@@ -160,4 +147,5 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
         mVaryViewHelperController.showEmpty(msg);
     }
+
 }

@@ -23,10 +23,8 @@ import java.util.Map;
 public class InfoDetailsFragment extends BaseListFragment<NewsTopPresenter,DataBean> {
     private RoomType roomType;
 
-    public static InfoDetailsFragment newInstance(RoomType roomType) {
-        InfoDetailsFragment fragment = new InfoDetailsFragment();
-        fragment.roomType=roomType;
-        return fragment;
+    public  InfoDetailsFragment (RoomType roomType) {
+        this.roomType=roomType;
     }
     @Override
     protected Map<String, String> getRequestParams() {

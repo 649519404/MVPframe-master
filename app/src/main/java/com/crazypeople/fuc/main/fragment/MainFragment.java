@@ -6,11 +6,13 @@ import android.support.v4.view.ViewPager;
 
 import com.crazypeople.R;
 import com.crazypeople.common.base.baseFragment.BaseFragment;
+import com.crazypeople.common.sub.SubPro;
 import com.crazypeople.common.sugar.RoomType;
 
 import java.util.List;
 
 import butterknife.Bind;
+import rx.Observable;
 
 public class MainFragment extends BaseFragment implements ViewPager.OnPageChangeListener {
 
@@ -18,7 +20,7 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     TabLayout mTabLayout;
     @Bind(R.id.view_pager)
     ViewPager mViewPager;
-@Bind(R.id.app_bar_layout)
+    @Bind(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
     @Override
     protected int getContentLayout() {
@@ -74,6 +76,11 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
 
     public void showRefreshFinish(List score) {
+
+    }
+
+    @Override
+    public void showNetError(Observable observable, SubPro subscriberOnNextListener) {
 
     }
 

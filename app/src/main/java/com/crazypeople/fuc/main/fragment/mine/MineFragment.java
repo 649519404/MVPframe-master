@@ -11,7 +11,7 @@ import com.crazypeople.R;
 import com.crazypeople.common.base.baseAdapter.RecycleViewAdapter;
 import com.crazypeople.common.base.baseFragment.BaseFragment;
 import com.crazypeople.common.base.baseHolder.BaseViewHolder;
-import com.crazypeople.common.spfs.SharedPrefHelper;
+import com.crazypeople.common.sub.SubPro;
 import com.crazypeople.fuc.main.activity.login.LoginActivity;
 import com.crazypeople.fuc.main.entity.DataBean;
 import com.crazypeople.fuc.main.presenter.MinePresenter;
@@ -20,6 +20,7 @@ import com.crazypeople.fuc.main.view.MineView;
 import java.util.List;
 
 import butterknife.Bind;
+import rx.Observable;
 
 /**
  * Created by 曲志强 on 2017/3/9.
@@ -36,13 +37,13 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
     LinearLayout login_la;
     @Override
     protected void baseInitView() {
-    if(SharedPrefHelper.getInstance().getLoginStatus()){
-        linearLayout.setVisibility(View.GONE);
-        login_la.setVisibility(View.VISIBLE);
-    }else{
-        linearLayout.setVisibility(View.VISIBLE);
-        login_la.setVisibility(View.GONE);
-    }
+//    if(SharedPrefHelper.getInstance().getLoginStatus()){
+//        linearLayout.setVisibility(View.GONE);
+//        login_la.setVisibility(View.VISIBLE);
+//    }else{
+//        linearLayout.setVisibility(View.VISIBLE);
+//        login_la.setVisibility(View.GONE);
+//    }
     }
 
     @Override
@@ -53,7 +54,7 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
-        mPresenter.getAll();
+        //mPresenter.getAll();
 
     }
 
@@ -70,6 +71,11 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
     @Override
     protected int getContentLayout() {
         return R.layout.mine_layout;
+    }
+
+    @Override
+    public void showNetError(Observable observable, SubPro subscriberOnNextListener) {
+
     }
 
     @Override
