@@ -3,7 +3,7 @@ package com.crazypeople.common.spfs;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.crazypeople.MVPframeApplication;
+import com.crazypeople.SoftApplication;
 
 import javax.inject.Singleton;
 
@@ -26,7 +26,7 @@ public class SharedPrefHelper {
 
 
 	public SharedPrefHelper() {
-		sharedPreferences = MVPframeApplication.mContext
+		sharedPreferences = SoftApplication.mContext
 				.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
 	}
 

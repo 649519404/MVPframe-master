@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffffff"
+        android:background="#fff"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -25,19 +25,20 @@
             android:layout_weight="1"
             >
             <ImageView
+                android:id="@+id/img_la1"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/zbjs"
+                android:src="@mipmap/sy"
                 />
 
             <TextView
-                android:text="资本捐助"
+                android:text="首页"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:layout_marginTop="3dp"
-                android:textColor="#6F6F6F"
-                android:id="@+id/textView" />
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/tx_la1" />
 
         </LinearLayout>
 
@@ -51,19 +52,20 @@
             >
 
             <ImageView
+
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/zbjz"
-                android:id="@+id/imageView" />
+                android:src="@mipmap/zb_none"
+                android:id="@+id/img_la2"/>
 
             <TextView
-                android:text="资本接受"
+                android:text="直播大厅"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
-                android:textColor="#6F6F6F"
+                android:textColor="@color/gary_text"
                 android:layout_marginTop="3dp"
-                android:id="@+id/textView3" />
+                android:id="@+id/tx_la2" />
 
         </LinearLayout>
 
@@ -76,19 +78,20 @@
             android:layout_weight="1"
             >
             <ImageView
+                android:id="@+id/img_la3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/person"
+                android:src="@mipmap/yw"
                 />
 
             <TextView
-                android:text="个人中心"
+                android:text="蚁窝"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
-                android:textColor="#6F6F6F"
+                android:textColor="@color/gary_text"
                 android:layout_marginTop="3dp"
-                android:id="@+id/textView2" />
+                android:id="@+id/tx_la3" />
 
         </LinearLayout>
         <LinearLayout
@@ -100,20 +103,21 @@
             android:layout_weight="1"
             >
             <ImageView
+                android:id="@+id/img_la4"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/quit"
+                android:src="@mipmap/mine_none"
                 />
 
             <TextView
-                android:text="退出"
+                android:text="我的"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:layout_marginTop="3dp"
-                android:textColor="#6F6F6F"
+                android:textColor="@color/gary_text"
 
-                android:id="@+id/textView1" />
+                android:id="@+id/tx_la4" />
 
         </LinearLayout>
     </LinearLayout>

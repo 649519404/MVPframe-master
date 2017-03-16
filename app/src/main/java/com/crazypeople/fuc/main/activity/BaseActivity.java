@@ -33,11 +33,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected View mRootView;
     protected T mPresenter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout();
-      //  MVPframeApplication.getComponent().inject(this);
+      //  SoftApplication.getComponent().inject(this);
         ButterKnife.bind(this);
 
         baseInitView();

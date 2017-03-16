@@ -6,27 +6,31 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.crazypeople.R;
+import com.crazypeople.SoftApplication;
 import com.crazypeople.common.base.baseAdapter.RecycleViewAdapter;
 import com.crazypeople.common.base.baseFragment.BaseFragment;
 import com.crazypeople.common.base.baseHolder.BaseViewHolder;
-import com.crazypeople.common.sub.SubPro;
+import com.crazypeople.common.observer.LoginObserver;
+import com.crazypeople.common.observer.Observer;
+import com.crazypeople.common.spfs.SharedPrefHelper;
 import com.crazypeople.fuc.main.activity.login.LoginActivity;
 import com.crazypeople.fuc.main.entity.DataBean;
+import com.crazypeople.fuc.main.entity.User;
 import com.crazypeople.fuc.main.presenter.MinePresenter;
 import com.crazypeople.fuc.main.view.MineView;
 
 import java.util.List;
 
 import butterknife.Bind;
-import rx.Observable;
 
 /**
  * Created by 曲志强 on 2017/3/9.
  */
 
-public class MineFragment extends BaseFragment<MinePresenter> implements MineView<List<DataBean>> {
+public class MineFragment extends BaseFragment<MinePresenter> implements Observer<User>, MineView<List<DataBean>> {
 
 
     @Bind(R.id.review_mine)
@@ -35,15 +39,13 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
     LinearLayout linearLayout;
     @Bind(R.id.la_mine_login)
     LinearLayout login_la;
+    @Bind(R.id.tx_mine_name)
+    TextView name;
     @Override
     protected void baseInitView() {
-//    if(SharedPrefHelper.getInstance().getLoginStatus()){
-//        linearLayout.setVisibility(View.GONE);
-//        login_la.setVisibility(View.VISIBLE);
-//    }else{
-//        linearLayout.setVisibility(View.VISIBLE);
-//        login_la.setVisibility(View.GONE);
-//    }
+
+        SoftApplication.loginObserver.register(this);
+
     }
 
     @Override
@@ -54,14 +56,13 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
-        //mPresenter.getAll();
+        mPresenter.getAll();
 
     }
 
-    @Override
-    public void setupActivityComponent() {
-        //DaggerMVPframeComponent.builder().build().addSub(new MineModule(this)).inject(this);
-    }
+
+
+
 
     @Override
     protected MinePresenter getChildPresenter() {
@@ -70,11 +71,11 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
 
     @Override
     protected int getContentLayout() {
-        return R.layout.mine_layout;
+        return R.layout.mine_content_layout;
     }
 
     @Override
-    public void showNetError(Observable observable, SubPro subscriberOnNextListener) {
+    public void showNetError() {
 
     }
 
@@ -99,6 +100,18 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineVie
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    public void onUpdateUser(LoginObserver<User> observable, User data) {
+        name.setText(data.getNickName());
+        if(SharedPrefHelper.getInstance().getLoginStatus()){
+            linearLayout.setVisibility(View.GONE);
+            login_la.setVisibility(View.VISIBLE);
+        }else{
+            linearLayout.setVisibility(View.VISIBLE);
+            login_la.setVisibility(View.GONE);
+        }
     }
 
     public class SpaceItemDecoration extends RecyclerView.ItemDecoration{

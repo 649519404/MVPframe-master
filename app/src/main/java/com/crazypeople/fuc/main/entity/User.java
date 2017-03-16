@@ -5,8 +5,8 @@ package com.crazypeople.fuc.main.entity;
  */
 
 public class User {
-/*    {"uid":4,"live_style":"a","sex":0,"card_num":"a","code":"","password":"15638191708","isAnchor":1,"city":"",
-        "live_type":"a","username":"15638191708","address":"","email":"","nickName":"七窍玲珑","name":"a",
+/*    {"uid":4,"live_style":"MainFragment","sex":0,"card_num":"MainFragment","code":"","password":"15638191708","isAnchor":1,"city":"",
+        "live_type":"MainFragment","username":"15638191708","address":"","email":"","nickName":"七窍玲珑","name":"MainFragment",
         "head_img":"http://127.0.0.1:8080/tv/headImage/4.jpg"}*/
 
     private String uid;

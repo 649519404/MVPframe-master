@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
         "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
         "source": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
+        "source": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\MVPframe-master\\InitActivity\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",

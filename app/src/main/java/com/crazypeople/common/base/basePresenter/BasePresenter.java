@@ -2,11 +2,9 @@ package com.crazypeople.common.base.basePresenter;
 
 import android.content.Context;
 
-import com.crazypeople.MVPframeApplication;
+import com.crazypeople.SoftApplication;
 import com.crazypeople.common.inter.ConnectManager;
 import com.crazypeople.common.inter.ConnectService;
-import com.crazypeople.common.sub.SubPro;
-import com.crazypeople.common.sub.SubscriberOnNextListener;
 
 import javax.inject.Inject;
 
@@ -15,7 +13,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public abstract class BasePresenter implements SubscriberOnNextListener {
+public abstract class BasePresenter  {
 
     private  Context context;
     @Inject
@@ -30,7 +28,7 @@ public abstract class BasePresenter implements SubscriberOnNextListener {
 
     public BasePresenter() {
 
-        MVPframeApplication.getComponent().inject(this);
+        SoftApplication.getComponent().inject(this);
         System.out.print("");
     }
 
@@ -53,23 +51,23 @@ public abstract class BasePresenter implements SubscriberOnNextListener {
         }
 
     }
-    @SuppressWarnings("unchecked")
-    public void requestDate(Observable  observable, RequestMode mode) {
-        if (null == observable) {
-            throw new IllegalArgumentException("no Observable");
-        }
-
-        this.mode = mode;
-        try {
-
-            SubPro subscriber = new SubPro(this);
-
-            observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    @SuppressWarnings("unchecked")
+//    public void requestDate(Observable  observable, RequestMode mode) {
+//        if (null == observable) {
+//            throw new IllegalArgumentException("no Observable");
+//        }
+//
+//        this.mode = mode;
+//        try {
+//
+//            SubPro subscriber = new SubPro(this);
+//
+//            observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 
     public ConnectManager getService() {

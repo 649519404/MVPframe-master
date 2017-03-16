@@ -5,6 +5,7 @@ import android.content.Context;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.inter.HttpResult;
 import com.crazypeople.common.sub.ProgressSubscriber;
+import com.crazypeople.common.sub.SubscriberOnNextListener;
 import com.crazypeople.fuc.main.activity.login.dagger.LoginView;
 
 import rx.Observable;
@@ -13,7 +14,7 @@ import rx.Observable;
  * Created by 曲志强 on 2017/3/9.
  */
 
-public class LoginPresenter<T> extends BasePresenter {
+public class LoginPresenter<T> extends BasePresenter implements SubscriberOnNextListener {
     private  Context context;
     LoginView loginView;
 

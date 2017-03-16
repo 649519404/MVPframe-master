@@ -24,7 +24,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new InfoDetailsFragment(roomTypes.get(position));
+        return new HallFragment(roomTypes.get(position));
     }
 
     @Override

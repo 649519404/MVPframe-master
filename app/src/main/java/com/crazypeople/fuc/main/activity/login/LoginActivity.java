@@ -2,10 +2,10 @@ package com.crazypeople.fuc.main.activity.login;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.crazypeople.MVPframeApplication;
 import com.crazypeople.R;
+import com.crazypeople.SoftApplication;
 import com.crazypeople.common.spfs.SharedPrefHelper;
 import com.crazypeople.fuc.main.activity.BaseActivity;
 import com.crazypeople.fuc.main.activity.login.dagger.LoginView;
@@ -26,6 +26,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter<User>> implements
     LoginPresenter loginPresenter;
     @Bind(R.id.btn_login)
     Button btn_login;
+
     @Override
     protected LoginPresenter getChildPresenter() {
         return new LoginPresenter(this,this);
@@ -51,7 +52,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter<User>> implements
 
 
     @Override
-    public void onClick(View v) {
+    public void onClickEvent(View v) {
+        super.onClickEvent(v);
         switch (v.getId()){
             case R.id.btn_login:
                 mPresenter.login("15638191708","15638191708");
@@ -62,9 +64,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter<User>> implements
 
     @Override
     public void requestFinish(User user) {
-        MVPframeApplication.user=user;
+        SoftApplication.user=user;
         SharedPrefHelper.getInstance().setLoginStatus(true);
-        Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+       SoftApplication.loginObserver.notifyObservers(user);
 
     }
 }

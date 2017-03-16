@@ -10,21 +10,18 @@ import com.crazypeople.common.base.baseHolder.BaseViewHolder;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.refresh.ProgressStyle;
 import com.crazypeople.common.refresh.XRecyclerView;
-import com.crazypeople.common.sub.SubPro;
-import com.crazypeople.fuc.main.view.MainView;
+import com.crazypeople.fuc.main.view.BaseListView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import rx.Observable;
-
 
 public abstract class BaseListFragment<T extends BasePresenter, K> extends
         BaseFragment<T> implements
-        MainView<K>, XRecyclerView.LoadingListener {
+        BaseListView<K>, XRecyclerView.LoadingListener {
 
-    XRecyclerView mRecyclerView;
+    protected XRecyclerView mRecyclerView;
 
     protected RecycleViewAdapter<K> mAdapter;
 
@@ -41,8 +38,8 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
     public void baseInit() {
         params = new HashMap<>();
         showLoading();
-        initData();
-
+        initData(PAGE, BasePresenter.RequestMode.FRIST);
+            addHeader();
     }
 
 
@@ -51,6 +48,13 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
     @Override
     protected void baseInitView() {
         mRecyclerView = (XRecyclerView) mRootView.findViewById(R.id.recycleView);
+
+    }
+
+
+    protected void addHeader() {
+
+
 
     }
 
@@ -99,7 +103,7 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
     }
 
     protected abstract void fitDates(BaseViewHolder helper, K item);
-    protected abstract void initData();
+    protected abstract void initData(int page, BasePresenter.RequestMode mode);
     protected abstract int getItemLayout();
 
     @Override
@@ -122,14 +126,13 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
     }
 
     @Override
-    public void showNetError(Observable observable, SubPro subscriber) {
+    public void showNetError() {
         if (mVaryViewHelperController == null) {
             throw new IllegalStateException("no ViewHelperController");
         }
         mVaryViewHelperController.showNetworkError(v -> {
             showLoading();
-
-            mPresenter.requestDate(observable, BasePresenter.RequestMode.FRIST);
+            initData(PAGE, BasePresenter.RequestMode.FRIST);
 
         });
     }
@@ -137,7 +140,8 @@ public abstract class BaseListFragment<T extends BasePresenter, K> extends
     @Override
     public void onRefresh() {
         PAGE = 1;
-//        mPresenter.requestDate(getRequestParams(), BasePresenter.RequestMode.REFRESH);
+        initData(PAGE, BasePresenter.RequestMode.REFRESH);
+
     }
 
     @Override

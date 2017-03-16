@@ -50,7 +50,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (null == mRootView) {
             mRootView = inflater.inflate(getContentLayout(), container, false);
-            setupActivityComponent();
+
             ButterKnife.bind(this, mRootView);
             baseInitView();
 
@@ -72,16 +72,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
         return mRootView;
     }
-
+    protected abstract int getContentLayout();
     protected abstract void baseInitView() ;
-
     public abstract void baseInit();
-   public abstract void setupActivityComponent();
     protected T getChildPresenter() {
         return null;
     }
 
-    protected abstract int getContentLayout();
+
 
 
 
