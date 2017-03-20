@@ -20,6 +20,9 @@ public interface ConnectService {
     @FormUrlEncoded
     @POST("/tv/app/user/login")
     Observable<HttpResult<User>> login(@FieldMap Map<String, String> params);
+    @FormUrlEncoded
+    @POST("/tv/app/allRoom")
+    Observable<HttpResult<Map<String,List<DataBean>>>> getAllRoom(@FieldMap Map<String, String> params);
 
 //    @FormUrlEncoded
 //    @POST("weixin/query")

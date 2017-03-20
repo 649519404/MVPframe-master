@@ -8,6 +8,8 @@ import com.crazypeople.common.dagger.MVPframeComponent;
 import com.crazypeople.common.observer.LoginObserver;
 import com.crazypeople.common.spfs.SharedPrefHelper;
 import com.crazypeople.fuc.main.entity.User;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.orm.SugarContext;
 
 
@@ -18,6 +20,7 @@ public class SoftApplication extends Application {
     public static Context mContext;
     public static User user;
     public static LoginObserver<User> loginObserver;
+    public static ImageLoader loader;
 
     @Override
     public void onCreate() {
@@ -30,6 +33,11 @@ public class SoftApplication extends Application {
             AppConfig.getAppConfigInfo(this);
             SharedPrefHelper.getInstance().setIsFirst(true);
         }
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        loader=ImageLoader.getInstance();
+
+        loader.init(config);
+
 
     }
 

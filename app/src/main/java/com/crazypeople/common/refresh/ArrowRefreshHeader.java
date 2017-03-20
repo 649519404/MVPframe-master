@@ -202,7 +202,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
         if (mState == STATE_REFRESHING && height <=  mMeasuredHeight) {
             //return;
         }
-        int destHeight = 0; // default: scroll back to dismiss header.
+        int destHeight = 0; // default_pic: scroll back to dismiss header.
         // is refreshing, just scroll back to show all the header.
         if (mState == STATE_REFRESHING) {
             destHeight = mMeasuredHeight;

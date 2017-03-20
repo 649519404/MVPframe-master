@@ -29,6 +29,12 @@ public class ConnectManager {
        return connectService.getNewTopList(map);
     }
 
+    public Observable<HttpResult<Map<String,List<DataBean>>>> getAllRoom(){
+        Map<String,String> map=  new HashMap<String,String>();
+
+        return connectService.getAllRoom(map);
+    }
+
     public Observable<HttpResult<User>>login(String mobile, String password){
         Map<String,String> map=  new HashMap<String,String>();
         map.put("mobile",mobile);

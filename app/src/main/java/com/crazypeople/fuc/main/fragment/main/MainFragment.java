@@ -1,20 +1,26 @@
-package com.crazypeople.fuc.main.fragment;
+package com.crazypeople.fuc.main.fragment.main;
 
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.crazypeople.R;
-import com.crazypeople.common.base.baseFragment.BaseListFragment;
-import com.crazypeople.common.base.baseHolder.BaseViewHolder;
-import com.crazypeople.common.base.basePresenter.BasePresenter;
+import com.crazypeople.common.base.baseFragment.BaseFragment;
+import com.crazypeople.common.refresh.ProgressStyle;
+import com.crazypeople.common.refresh.XRecyclerView;
 import com.crazypeople.fuc.main.entity.DataBean;
-import com.crazypeople.fuc.main.presenter.NewsTopPresenter;
+import com.crazypeople.fuc.main.fragment.MinePagerAdapter;
+import com.crazypeople.fuc.main.presenter.MainPresenter;
+import com.crazypeople.fuc.main.view.MainView;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  * Created by 曲志强 on 2017/3/15.
  */
 
-public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
+public class MainFragment extends BaseFragment<MainPresenter> implements MainView<DataBean>,XRecyclerView.LoadingListener{
 
 
     private MinePagerAdapter minePagerAdapter;
@@ -37,33 +43,58 @@ public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
     private boolean mIsStop;
     private int oldPostion;
 
+    XRecyclerView mRecyclerView;
+    private MainRecyleViewAdapter adapter;
+
     @Override
     protected Map<String, String> getRequestParams() {
         return null;
     }
 
+
+
     @Override
-    protected void fitDates(BaseViewHolder helper, DataBean item) {
-        helper.setText(R.id.name, item.getNickName());
+    protected int getContentLayout() {
+        return R.layout.fragment_main_common;
     }
 
     @Override
-    protected NewsTopPresenter getChildPresenter() {
-        return new NewsTopPresenter(this);
+    protected void baseInitView() {
+        mRecyclerView= (XRecyclerView) mRootView.findViewById(R.id.recycleView);
+        addHeader();
+        adapter=new MainRecyleViewAdapter(getActivity());
+        mRecyclerView.setLoadingMoreEnabled(false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.addItemDecoration(new SpaceItemDecoration(10));
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);
+        mRecyclerView.setLoadingListener(this);
+        mRecyclerView.setAdapter(adapter);
     }
 
     @Override
-    protected void initData(int page, BasePresenter.RequestMode mode) {
-        getPresenter().getAll("1", page, mode);
-        getPresenter().getPic("1");
+    public void baseInit() {
+        showLoading();
+        mPresenter.getAllRoom();
+        mPresenter.getPic("0");
     }
 
     @Override
-    protected int getItemLayout() {
-        return R.layout.list_item;
+    protected View getLoadingTargetView() {
+        return mRecyclerView;
+    }
+    @Override
+    protected MainPresenter getChildPresenter() {
+        return new MainPresenter(this);
     }
 
-    @Override
+
+
+
     protected void addHeader() {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.main_fragment_layout, null);
         viewPager = (ViewPager) view.findViewById(R.id.vp_main_header);
@@ -71,6 +102,7 @@ public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
         minePagerAdapter = new MinePagerAdapter(getActivity());
         viewPager.setAdapter(minePagerAdapter);
         mRecyclerView.addHeaderView(view);
+
         viewPager.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -130,8 +162,28 @@ public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
         super.onStop();
     }
 
+
+
     @Override
-    public void viewPagerInit(List<DataBean> lists) {
+    public void showNetError() {
+        if (mVaryViewHelperController == null) {
+            throw new IllegalStateException("no ViewHelperController");
+        }
+        mVaryViewHelperController.showNetworkError(v -> {
+            showLoading();
+           mPresenter.getAllRoom();
+            mPresenter.getPic("0");
+
+        });
+    }
+
+    @Override
+    public void showToastError() {
+
+    }
+
+    @Override
+    public void viewPagerInit(List lists) {
         group.removeAllViews();
         for (int i=0;i<lists.size();i++) {
             LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(
@@ -151,8 +203,36 @@ public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
 //       if(!scheduledExecutorService.isShutdown()){
 //            scheduledExecutorService.shutdown();
 //        }
+    }
 
 
+
+
+
+    @Override
+    public void datainit(Map<String, List<DataBean>> lists) {
+        refreshView();
+        adapter.setMap(lists);
+        adapter.notifyDataSetChanged();
+        mRecyclerView.refreshComplete();
+//        mRecyclerView.refreshComplete();
+
+    }
+
+    @Override
+    public void onRefresh() {
+
+        mPresenter.getAllRoom();
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     public class ViewPagerTask implements Runnable {
@@ -177,5 +257,26 @@ public class MainFragment extends BaseListFragment<NewsTopPresenter, DataBean> {
                // Toast.makeText(getActivity(),currentItem+"",Toast.LENGTH_LONG).show();
             }
         };
+    }
+    public class SpaceItemDecoration extends RecyclerView.ItemDecoration{
+
+        private int space;
+
+        public SpaceItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+//            if(view instanceof )
+          int index=  parent.getChildLayoutPosition(view);
+          RecyclerView.LayoutManager layoutManager= parent.getLayoutManager();
+            if(view instanceof FrameLayout){
+
+                return;
+            }
+            if(parent.getChildPosition(view) != 0)
+                outRect.top = space;
+        }
     }
 }

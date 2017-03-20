@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import com.crazypeople.R;
+import com.bumptech.glide.Glide;
 import com.crazypeople.fuc.main.entity.DataBean;
 
 import java.util.List;
@@ -59,7 +59,7 @@ public class MinePagerAdapter extends PagerAdapter {
 		final DataBean homePic = homePics.get(position);
 		ImageView imageView = new ImageView(context);
 		imageView.setScaleType(ScaleType.CENTER_CROP);
-		imageView.setImageResource(R.mipmap.title);
+		Glide.with(context).load(homePic.getImg()).into(imageView);
 		container.addView(imageView);
 		return imageView;
 	}

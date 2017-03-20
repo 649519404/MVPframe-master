@@ -17,6 +17,7 @@
         android:layout_height="20dp"
         android:layout_gravity="left|center_vertical"
         android:src="@mipmap/back"
+        android:visibility="gone"
         />
 
     <TextView

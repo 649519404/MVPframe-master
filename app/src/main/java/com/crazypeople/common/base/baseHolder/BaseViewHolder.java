@@ -22,6 +22,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.crazypeople.SoftApplication;
+import com.crazypeople.common.util.ImageOptions;
 
 
 public class BaseViewHolder extends RecyclerView.ViewHolder {
@@ -57,8 +59,9 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     }
 
     public BaseViewHolder setImageUrl(int viewId,Context context,String url){
-        ImageView view = getView(viewId);
-        Glide.with(context).load(url).into(view);
+        ImageView view = (ImageView) convertView.findViewById(viewId);
+//        Glide.with(context).load(url).into(view);
+        SoftApplication.loader.displayImage(url,view,ImageOptions.getCollectPictureOptions());
         return this;
     }
 

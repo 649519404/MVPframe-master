@@ -24,8 +24,6 @@ import com.crazypeople.fuc.main.view.MineView;
 
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * Created by 曲志强 on 2017/3/9.
  */
@@ -33,18 +31,18 @@ import butterknife.Bind;
 public class MineFragment extends BaseFragment<MinePresenter> implements Observer<User>, MineView<List<DataBean>> {
 
 
-    @Bind(R.id.review_mine)
     RecyclerView recyclerView;
-    @Bind(R.id.la_mine_not_login)
     LinearLayout linearLayout;
-    @Bind(R.id.la_mine_login)
     LinearLayout login_la;
-    @Bind(R.id.tx_mine_name)
     TextView name;
     @Override
     protected void baseInitView() {
 
         SoftApplication.loginObserver.register(this);
+        recyclerView= (RecyclerView) mRootView.findViewById(R.id.review_mine);
+        linearLayout= (LinearLayout) mRootView.findViewById(R.id.la_mine_not_login);
+        login_la= (LinearLayout) mRootView.findViewById(R.id.la_mine_login);
+        name= (TextView) mRootView.findViewById(R.id.tx_mine_name);
 
     }
 
@@ -90,8 +88,10 @@ public class MineFragment extends BaseFragment<MinePresenter> implements Observe
         RecycleViewAdapter  mAdapter = new RecycleViewAdapter<DataBean>(R.layout.mine_list_item, dataBeen) {
 
             @Override
-            protected void convert(BaseViewHolder holder, DataBean dataBeen) {
-                holder.setText(R.id.name,dataBeen.getNickName());
+            protected void convert(BaseViewHolder holder, DataBean item) {
+                holder.setText(R.id.name, item.getTitle());
+//                holder.setText(R.id.nick_name,item.getNickName());
+                holder.setImageUrl(R.id.picture1,getContext(),item.getImg());
             }
         };
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());

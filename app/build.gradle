@@ -58,4 +58,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
     provided 'javax.annotation:jsr250-api:1.0'
     compile 'com.google.android.gms:play-services-ads:10.0.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+ 
 }

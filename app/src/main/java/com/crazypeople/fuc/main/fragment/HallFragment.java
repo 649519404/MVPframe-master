@@ -50,8 +50,10 @@ public class HallFragment extends BaseListFragment<NewsTopPresenter,DataBean> {
     }
 
     @Override
-    protected void fitDates(BaseViewHolder helper, DataBean  item) {
-            helper.setText(R.id.name,item.getNickName());
+    protected void fitDates(BaseViewHolder holder, DataBean  item) {
+        holder.setText(R.id.name, item.getTitle());
+        holder.setText(R.id.nick_name,item.getNickName());
+        holder.setImageUrl(R.id.picture,getContext(),item.getImg());
     }
 
     @Override

@@ -33,11 +33,7 @@ public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<Recycle
         }
     }
 
-    @Override
-    public int getItemViewType(int position) {
 
-        return super.getItemViewType(position);
-    }
 
     public RecycleViewAdapter(View contentView, List<T> data) {
         this(0, data);

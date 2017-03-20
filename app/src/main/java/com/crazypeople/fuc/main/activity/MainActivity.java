@@ -10,8 +10,8 @@ import com.crazypeople.R;
 import com.crazypeople.common.base.basePresenter.BasePresenter;
 import com.crazypeople.common.spfs.SharedPrefHelper;
 import com.crazypeople.fuc.PicAdapter;
-import com.crazypeople.fuc.main.fragment.MainContentFragment;
-import com.crazypeople.fuc.main.fragment.MainFragment;
+import com.crazypeople.fuc.main.fragment.main.MainContentFragment;
+import com.crazypeople.fuc.main.fragment.main.MainFragment;
 import com.crazypeople.fuc.main.fragment.mine.MineFragment;
 
 import java.util.ArrayList;

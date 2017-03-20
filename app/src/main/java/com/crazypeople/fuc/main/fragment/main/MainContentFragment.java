@@ -1,4 +1,4 @@
-package com.crazypeople.fuc.main.fragment;
+package com.crazypeople.fuc.main.fragment.main;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import com.crazypeople.R;
 import com.crazypeople.common.base.baseFragment.BaseFragment;
 import com.crazypeople.common.sugar.RoomType;
+import com.crazypeople.fuc.main.fragment.FragmentAdapter;
 
 import java.util.List;
 
